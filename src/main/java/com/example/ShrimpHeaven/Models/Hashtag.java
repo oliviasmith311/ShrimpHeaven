@@ -1,5 +1,7 @@
 package com.example.ShrimpHeaven.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +17,7 @@ public class Hashtag {
     @GeneratedValue
     private Long id;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "hashtags")
     private Collection<Post> posts;
 

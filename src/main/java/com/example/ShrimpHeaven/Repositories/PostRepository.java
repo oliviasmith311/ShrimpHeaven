@@ -7,4 +7,6 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 
     Post findPostByTitle(String title);
 
+    Post findPostById(Long id);
+
 }

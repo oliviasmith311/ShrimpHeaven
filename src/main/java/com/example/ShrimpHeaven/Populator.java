@@ -38,5 +38,27 @@ public class Populator implements CommandLineRunner {
         hashtagRepo.save(hashtag1);
         post1.addHashtag(hashtag1);
         postRepo.save(post1);
+
+        Author author2 = new Author("Greg Gregerson");
+        authorRepo.save(author2);
+        PostCategory category2 = new PostCategory("Stories");
+        categoryRepository.save(category2);
+        Post post2 = new Post("When I Met Clint", author2, category2, "We kissed");
+        postRepo.save(post2);
+        Hashtag hashtag2 = new Hashtag("romantic");
+        hashtagRepo.save(hashtag2);
+        post2.addHashtag(hashtag2);
+        postRepo.save(post2);
+
+        Author author3 = new Author("Justin McElroo");
+        authorRepo.save(author3);
+        PostCategory category3 = new PostCategory("Questions");
+        categoryRepository.save(category3);
+        Post post3 = new Post("Favorite McElroy goof?", author3, category3, "Mine is Shrimp Heaven Now!");
+        postRepo.save(post3);
+        Hashtag hashtag3 = new Hashtag("amazing");
+        hashtagRepo.save(hashtag3);
+        post3.addHashtag(hashtag3);
+        postRepo.save(post3);
     }
 }

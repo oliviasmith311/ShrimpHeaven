@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@Controller
+@RestController
 public class PostController {
 
     private PostRepository postRepository;
@@ -30,26 +30,39 @@ public class PostController {
         this.hashtagRepository = hashtagRepository;
     }
 
-    @RequestMapping({"/posts", "/", ""})
+    @RequestMapping("/")
     public Collection<Post> displayPosts(){
         return (Collection<Post>) postRepository.findAll();
     }
 
-    @GetMapping("/posts/{title}")
-    public Post displaySinglePost(@PathVariable String title){
-        Post retrievedPost = postRepository.findPostByTitle(title);
+    @GetMapping("/posts/{id}")
+    public Post displaySinglePost(@PathVariable Long id){
+        Post retrievedPost = postRepository.findPostById(id);
 
         return retrievedPost;
     }
 
-    @PostMapping("/add-posts")
-    public Collection<Post> addPost(@RequestParam String title, String author, String category, String postBody){
-        Author authorToStore = new Author(author);
-        PostCategory categoryToStore = new PostCategory(category);
+    @PostMapping("/")
+    public Collection<Post> addPost(@RequestBody Post post){
+        Author authorToStore = new Author(post.getAuthor().getName());
+
+        for(Author author : authorRepository.findAll()){
+            if(author.equals(post.getAuthor())){
+                authorToStore = author;
+            }
+        }
         authorRepository.save(authorToStore);
+
+        PostCategory categoryToStore = new PostCategory(post.getPostCategory().getTitle());
+
+        for(PostCategory category : categoryRepository.findAll()){
+            if(category.equals(post.getPostCategory())){
+                categoryToStore = category;
+            }
+        }
         categoryRepository.save(categoryToStore);
 
-        Post postToBeMade = new Post(title, authorToStore, categoryToStore, postBody);
+        Post postToBeMade = new Post(post.getTitle(), authorToStore, categoryToStore, post.getPostBody());
         postRepository.save(postToBeMade);
 
         return (Collection<Post>) postRepository.findAll();

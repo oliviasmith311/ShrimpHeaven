@@ -1,5 +1,7 @@
 package com.example.ShrimpHeaven.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,6 +18,7 @@ public class Author {
 
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author")
     private Collection<Post> posts;
 

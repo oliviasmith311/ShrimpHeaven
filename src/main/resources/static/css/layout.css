@@ -5,36 +5,51 @@ body {
   margin-top: 0px;
 }
 
-h1 {
-  margin-bottom: 0px;
-  margin-top: 0.25em;
-  margin-right: 0.25em;
+.header {
+  text-align: left;
+  grid-column: 1;
 }
 
-.header {
-  align-items: center;
-  display: flex;
-  justify-content: end;
+.header h1{
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.header h2{
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.header img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .home {
   display: grid;
-  grid-template-columns: 0.5fr 2fr;
+  grid-template-columns: 0.7fr 0.5fr 2fr;
+}
+
+.navbar{
+    grid-column: 2;
+    height: 100%;
+    margin-bottom: 0px;
 }
 
 .navbar__main {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  grid-column: 1;
-  height: 100%;
   margin-top: 0px;
-  position: fixed;
   width: 6em;
 }
 
-.navbar__main h2 {
+.navbar h2 {
     margin-top: 1em;
+    text-align: center;
 }
 
 .navbar__main li {

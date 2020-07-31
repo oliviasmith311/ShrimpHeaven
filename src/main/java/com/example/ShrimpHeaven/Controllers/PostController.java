@@ -1,6 +1,7 @@
 package com.example.ShrimpHeaven.Controllers;
 
 import com.example.ShrimpHeaven.Models.Author;
+import com.example.ShrimpHeaven.Models.Hashtag;
 import com.example.ShrimpHeaven.Models.Post;
 import com.example.ShrimpHeaven.Models.PostCategory;
 import com.example.ShrimpHeaven.Repositories.AuthorRepository;
@@ -10,7 +11,10 @@ import com.example.ShrimpHeaven.Repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Optional;
 
 @RestController
 public class PostController {
@@ -35,7 +39,7 @@ public class PostController {
         return (Collection<Post>) postRepository.findAll();
     }
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/{id}")
     public Post displaySinglePost(@PathVariable Long id){
         Post retrievedPost = postRepository.findPostById(id);
 
@@ -67,4 +71,22 @@ public class PostController {
 
         return (Collection<Post>) postRepository.findAll();
     }
+    
+    @PostMapping("/{id}")
+    public Post addHashtagToPost(@RequestBody String hashtag, @PathVariable Long id){
+        Hashtag hashtagToAdd;
+        Optional<Hashtag> hashtagToAddOpt = Optional.ofNullable(hashtagRepository.findByContent(hashtag));
+        if(hashtagToAddOpt.isEmpty()){
+            hashtagToAdd = new Hashtag(hashtag);
+        } else {
+            hashtagToAdd = hashtagToAddOpt.get();
+        }
+        hashtagRepository.save(hashtagToAdd);
+        Post postToModify = postRepository.findPostById(id);
+        postToModify.addHashtag(hashtagToAdd);
+        postRepository.save(postToModify);
+
+        return postRepository.findPostById(id);
+    }
+
 }

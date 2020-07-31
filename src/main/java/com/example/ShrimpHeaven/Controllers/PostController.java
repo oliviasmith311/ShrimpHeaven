@@ -41,9 +41,7 @@ public class PostController {
 
     @GetMapping("/{id}")
     public Post displaySinglePost(@PathVariable Long id){
-        Post retrievedPost = postRepository.findPostById(id);
-
-        return retrievedPost;
+        return postRepository.findPostById(id);
     }
 
     @PostMapping("/")

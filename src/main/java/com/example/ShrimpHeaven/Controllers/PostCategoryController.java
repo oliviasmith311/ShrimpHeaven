@@ -26,7 +26,6 @@ public class PostCategoryController {
 
     @GetMapping("/categories/{id}")
     public PostCategory displaySingleCategory(@PathVariable Long id){
-        PostCategory categoryToDisplay = categoryRepository.findById(id).get();
-        return categoryToDisplay;
+        return categoryRepository.findById(id).get();
     }
 }

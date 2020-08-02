@@ -46,14 +46,6 @@
     list-style: none;
 }
 
-.navbar__main a{
-    color: white;
-}
-
-.navbar__main a:visited{
-    color: white;
-}
-
 .navbar h2 {
     color: white;
     font-size: 1.8em;

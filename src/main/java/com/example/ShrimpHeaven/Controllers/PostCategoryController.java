@@ -1,8 +1,6 @@
 package com.example.ShrimpHeaven.Controllers;
 
-import com.example.ShrimpHeaven.Models.Author;
 import com.example.ShrimpHeaven.Models.PostCategory;
-import com.example.ShrimpHeaven.Repositories.AuthorRepository;
 import com.example.ShrimpHeaven.Repositories.PostCategoryRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

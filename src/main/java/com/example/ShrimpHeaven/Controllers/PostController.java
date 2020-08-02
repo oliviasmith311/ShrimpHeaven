@@ -8,12 +8,9 @@ import com.example.ShrimpHeaven.Repositories.AuthorRepository;
 import com.example.ShrimpHeaven.Repositories.HashtagRepository;
 import com.example.ShrimpHeaven.Repositories.PostCategoryRepository;
 import com.example.ShrimpHeaven.Repositories.PostRepository;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Optional;
 
 @RestController
@@ -34,7 +31,7 @@ public class PostController {
         this.hashtagRepository = hashtagRepository;
     }
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public Collection<Post> displayPosts(){
         return (Collection<Post>) postRepository.findAll();
     }

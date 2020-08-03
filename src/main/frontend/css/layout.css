@@ -1,3 +1,15 @@
+.anchor{
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 3;
+}
+
+.author{
+  margin-bottom: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 body {
   margin-bottom: 0px;
   margin-left: 0px;
@@ -5,7 +17,40 @@ body {
   margin-top: 0px;
 }
 
-.header {
+.body{
+  margin-bottom: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.hashtagsAnchor{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.hashtags{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.hashtagsAll{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.hashtagContent{
+  margin-right: 10px;
+}
+
+.hashtagHeader{
+  height: 200px;
+  margin-right: 1em;
+  width: 100%;
+}
+
+.header{
   text-align: left;
   grid-column: 1;
 }
@@ -37,6 +82,7 @@ body {
     grid-column: 2;
     height: 100%;
     margin-bottom: 0px;
+    width: 8em;
 }
 
 .navbar__main {
@@ -55,4 +101,22 @@ body {
 
 .navbar__main li {
   margin-top: 0.25em;
+}
+
+.post{
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
+  width: 27em;
+}
+
+.postHeader{
+  margin-right: 2em;
+  width: 100%;
+}
+
+.title{
+  margin-bottom: 5px;
 }

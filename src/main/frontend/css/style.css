@@ -1,11 +1,24 @@
 .author{
-    height: 2em;
-    width: 13em;
+    font-size: 20px;
 }
 
-.category{
-    height: 2em;
-    width: 25em;
+.body{
+    font-size: 25px;
+}
+
+.hashtagsAnchor{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 40px;
+}
+
+.hashtags{
+    font-size: 15px;
+}
+
+.hashtagHeader{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 150px;
+    text-align: right;
 }
 
 .header{
@@ -27,11 +40,6 @@
     height: 15em;
 }
 
-.img__1{
-    height: 300px;
-    border-radius: 30px;
-}
-
 .navbar{
     background-color: teal;
     color: white;
@@ -51,19 +59,24 @@
     font-size: 1.8em;
 }
 
-.postBody{
-    font-size: 25px;
-    height: 6em;
+.post{
+    border: 5px;
+    border-color: black;
+    border-style: solid;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.postHeader{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 150px;
+    text-align: right;
 }
 
 .shrimppic{
     height: 10em;
 }
 
-.tags{
-    font-size: 30px;
-}
-
 .title{
-    height: 2em;
+    font-size: 50px;
+    text-align: center;
 }

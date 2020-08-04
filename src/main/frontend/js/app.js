@@ -87,3 +87,30 @@ allHashtagsButton.addEventListener('click', () => {
         .then(response => response.json())
         .then(response => displayAllHashtags(response));
 })
+
+const displayAllCategories = (jsonResponse) => {
+    const categoriesHeader = document.createElement('div');
+    categoriesHeader.innerText = "All Categories";
+    categoriesHeader.classList.add('categoriesHeader');
+    anchor.appendChild(categoriesHeader);
+
+    jsonResponse.forEach(category => {
+        const categoriesAnchor = document.createElement('div');
+        categoriesAnchor.classList.add('categoriesAnchor');
+
+        let categoryContent = document.createElement('div');
+        categoryContent.innerText = category.title;
+        categoriesAnchor.appendChild(categoryContent);
+        categoryContent.classList.add('categoryContent');
+        anchor.appendChild(categoriesAnchor);
+    })
+}
+
+const allCategoriesButton = document.querySelector('.allCategories');
+
+allCategoriesButton.addEventListener('click', () => {
+    clear(anchor);
+    fetch('http://localhost:8080/categories')
+    .then(response => response.json())
+    .then(response => displayAllCategories(response));
+})

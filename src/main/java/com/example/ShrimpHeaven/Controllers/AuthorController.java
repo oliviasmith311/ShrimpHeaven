@@ -1,7 +1,9 @@
 package com.example.ShrimpHeaven.Controllers;
 
 import com.example.ShrimpHeaven.Models.Author;
+import com.example.ShrimpHeaven.Models.Post;
 import com.example.ShrimpHeaven.Repositories.AuthorRepository;
+import com.example.ShrimpHeaven.Repositories.PostRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +14,11 @@ import java.util.Collection;
 public class AuthorController {
 
     private AuthorRepository authorRepository;
+    private PostRepository postRepository;
 
-    public AuthorController(AuthorRepository authorRepository){
+    public AuthorController(AuthorRepository authorRepository, PostRepository postRepository){
         this.authorRepository = authorRepository;
+        this.postRepository = postRepository;
     }
 
     @GetMapping("/authors")
@@ -23,8 +27,7 @@ public class AuthorController {
     }
 
     @GetMapping("/authors/{id}")
-    public Author displaySingleAuthor(@PathVariable Long id){
-        Author authorToDisplay = authorRepository.findAuthorById(id);
-        return authorToDisplay;
+    public Collection<Post> displayAllPostsBySingleAuthor(@PathVariable Long id){
+        return postRepository.findAllByAuthor(authorRepository.findAuthorById(id));
     }
 }

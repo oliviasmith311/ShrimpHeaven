@@ -1,6 +1,7 @@
 package com.example.ShrimpHeaven.Controllers;
 
 import com.example.ShrimpHeaven.Models.Hashtag;
+import com.example.ShrimpHeaven.Models.Post;
 import com.example.ShrimpHeaven.Repositories.HashtagRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,8 @@ public class HashtagController {
     }
 
     @GetMapping("/hashtags/{id}")
-    public Hashtag displaySingleHashtag(@PathVariable Long id){
-        return hashtagRepository.findById(id).get();
+    public Collection<Post> displayAllPostsOfSingleHashtag(@PathVariable Long id){
+        Hashtag hashtagToSearch = hashtagRepository.findById(id).get();
+        return hashtagToSearch.getPosts();
     }
 }

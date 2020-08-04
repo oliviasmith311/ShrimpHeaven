@@ -2,8 +2,30 @@
     font-size: 20px;
 }
 
+.authorsAnchor{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 40px;
+}
+
+.authorsHeader{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 150px;
+    text-align: right;
+}
+
 .body{
     font-size: 25px;
+}
+
+.categoriesAnchor{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 40px;
+}
+
+.categoriesHeader{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 150px;
+    text-align: right;
 }
 
 .hashtagsAnchor{

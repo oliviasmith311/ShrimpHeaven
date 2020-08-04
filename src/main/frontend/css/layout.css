@@ -10,6 +10,22 @@
   margin-right: 5px;
 }
 
+.authorsAnchor{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.authorContent{
+  margin-right: 10px;
+}
+
+.authorsHeader{
+  height: 200px;
+  margin-right: 1em;
+  width: 100%;
+}
+
 body {
   margin-bottom: 0px;
   margin-left: 0px;
@@ -21,6 +37,22 @@ body {
   margin-bottom: 3px;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.categoriesAnchor{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.categoryContent{
+  margin-right: 10px;
+}
+
+.categoriesHeader{
+  height: 200px;
+  margin-right: 1em;
+  width: 100%;
 }
 
 .hashtagsAnchor{

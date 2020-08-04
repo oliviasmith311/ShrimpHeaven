@@ -1,6 +1,7 @@
+// page load fetch request for all posts
 fetch('http://localhost:8080/')
-        .then(response => response.json())
-        .then(response => displayAllPosts(response));
+    .then(response => response.json())
+    .then(response => displayAllPosts(response));
 
 const anchor = document.querySelector('.anchor');
 
@@ -40,9 +41,33 @@ const displayAllPosts = (jsonResponse) => {
             postHashtags.innerText = "#" + hashtag.content;
             hashtagsAll.appendChild(postHashtags);
             postHashtags.classList.add('hashtags');
+
+            postHashtags.addEventListener('click', () => {
+                clear(anchor);
+                let hashtagLinkId = hashtag.id;
+                selectHashtag(hashtagLinkId);
+            })
         })
+
         postDiv.appendChild(hashtagsAll);
         anchor.appendChild(postDiv);
+
+        let postCategory = document.createElement('div');
+        postCategory.innerText = post.postCategory.title;
+        postDiv.appendChild(postCategory);
+        postCategory.classList.add('category');
+
+        postCategory.addEventListener('click', () => {
+            clear(anchor);
+            let categoryLinkId = post.postCategory.id;
+            selectCategory(categoryLinkId);
+        })
+
+        postAuthor.addEventListener('click', () => {
+            clear(anchor);
+            let authorLinkId = post.author.id;
+            selectAuthor(authorLinkId)
+        })
     })
 }
 
@@ -55,9 +80,9 @@ allPostsButton.addEventListener('click', () => {
 })
 
 const clear = (chosenElement) => {
-    while(chosenElement.firstChild){
+    while (chosenElement.firstChild) {
         chosenElement.removeChild(chosenElement.firstChild);
-    }   
+    }
 }
 
 
@@ -76,6 +101,11 @@ const displayAllHashtags = (jsonResponse) => {
         hashtagsAnchor.appendChild(hashtagContent);
         hashtagContent.classList.add('hashtagContent');
         anchor.appendChild(hashtagsAnchor);
+
+        hashtagContent.addEventListener('click', () => {
+            let hashtagId = hashtag.id;
+            selectHashtag(hashtagId);
+        })
     })
 }
 
@@ -103,6 +133,11 @@ const displayAllCategories = (jsonResponse) => {
         categoriesAnchor.appendChild(categoryContent);
         categoryContent.classList.add('categoryContent');
         anchor.appendChild(categoriesAnchor);
+
+        categoryContent.addEventListener('click', () => {
+            let categoryId = category.id;
+            selectCategory(categoryId);
+        })
     })
 }
 
@@ -111,6 +146,62 @@ const allCategoriesButton = document.querySelector('.allCategories');
 allCategoriesButton.addEventListener('click', () => {
     clear(anchor);
     fetch('http://localhost:8080/categories')
-    .then(response => response.json())
-    .then(response => displayAllCategories(response));
+        .then(response => response.json())
+        .then(response => displayAllCategories(response));
 })
+
+const displayAllAuthors = (jsonResponse) => {
+    const authorsHeader = document.createElement('div');
+    authorsHeader.innerText = "All Authors";
+    authorsHeader.classList.add('authorsHeader');
+    anchor.appendChild(authorsHeader);
+
+    jsonResponse.forEach(author => {
+        const authorsAnchor = document.createElement('div');
+        authorsAnchor.classList.add('authorsAnchor');
+
+        let authorContent = document.createElement('div');
+        authorContent.innerText = author.name;
+        authorsAnchor.appendChild(authorContent);
+        authorContent.classList.add('authorContent');
+        anchor.appendChild(authorsAnchor);
+
+        authorContent.addEventListener('click', () => {
+            let authorId = author.id;
+            selectAuthor(authorId);
+        })
+    })
+}
+
+const allAuthorsButton = document.querySelector('.allAuthors');
+
+allAuthorsButton.addEventListener('click', () => {
+    clear(anchor);
+    fetch('http://localhost:8080/authors')
+        .then(response => response.json())
+        .then(response => displayAllAuthors(response));
+})
+
+
+
+
+const selectAuthor = (authorId) => {
+    clear(anchor);
+    fetch(`http://localhost:8080/authors/${authorId}`)
+        .then(response => response.json())
+        .then(response => displayAllPosts(response));
+}
+
+const selectCategory = (categoryId) => {
+    clear(anchor);
+    fetch(`http://localhost:8080/categories/${categoryId}`)
+        .then(response => response.json())
+        .then(response => displayAllPosts(response));
+}
+
+const selectHashtag = (hashtagId) => {
+    clear(anchor);
+    fetch(`http://localhost:8080/hashtags/${hashtagId}`)
+        .then(response => response.json())
+        .then(response => displayAllPosts(response));
+}

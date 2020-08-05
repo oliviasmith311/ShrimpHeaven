@@ -142,6 +142,33 @@ body {
   margin-top: 0.25em;
 }
 
+.newAuthor{
+  height: 2em;
+  width: 30em;
+}
+
+.newBody{
+  height: 15em;
+  width: 30em;
+}
+
+.newCategory{
+  height: 2em;
+  width: 30em;
+}
+
+.newPost{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10em;
+  margin-top: 5em;     
+}
+
+.newTitle{
+  height: 2em;
+  width: 30em;
+}
+
 .post{
   margin-left: 0.5em;
   margin-right: 0.5em;

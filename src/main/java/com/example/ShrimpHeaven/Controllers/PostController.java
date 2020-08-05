@@ -41,7 +41,7 @@ public class PostController {
         return postRepository.findPostById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("/new")
     public Collection<Post> addPost(@RequestBody Post post){
         Author authorToStore = new Author(post.getAuthor().getName());
 

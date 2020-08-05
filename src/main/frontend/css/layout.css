@@ -39,6 +39,12 @@ body {
   margin-right: 5px;
 }
 
+.categoriesAll{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .categoriesAnchor{
   display: flex;
   flex-direction: column;
@@ -46,6 +52,8 @@ body {
 }
 
 .categoryContent{
+  display: flex;
+  flex-direction: column;
   margin-right: 10px;
 }
 
@@ -135,8 +143,6 @@ body {
 }
 
 .post{
-  display: flex;
-  flex-direction: column;
   margin-left: 0.5em;
   margin-right: 0.5em;
   margin-top: 0.5em;

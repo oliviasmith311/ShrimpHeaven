@@ -124,6 +124,9 @@ const displayAllCategories = (jsonResponse) => {
     categoriesHeader.classList.add('categoriesHeader');
     anchor.appendChild(categoriesHeader);
 
+    const categoriesAll = document.createElement('div');
+    categoriesAll.classList.add('categoriesAll');
+
     jsonResponse.forEach(category => {
         const categoriesAnchor = document.createElement('div');
         categoriesAnchor.classList.add('categoriesAnchor');
@@ -132,13 +135,15 @@ const displayAllCategories = (jsonResponse) => {
         categoryContent.innerText = category.title;
         categoriesAnchor.appendChild(categoryContent);
         categoryContent.classList.add('categoryContent');
-        anchor.appendChild(categoriesAnchor);
+        categoriesAll.appendChild(categoriesAnchor);
 
         categoryContent.addEventListener('click', () => {
             let categoryId = category.id;
             selectCategory(categoryId);
         })
     })
+
+    anchor.appendChild(categoriesAll);
 }
 
 const allCategoriesButton = document.querySelector('.allCategories');
@@ -156,6 +161,10 @@ const displayAllAuthors = (jsonResponse) => {
     authorsHeader.classList.add('authorsHeader');
     anchor.appendChild(authorsHeader);
 
+    const authorsAll = document.createElement('div');
+    authorsAll.classList.add('authorsAll');
+
+
     jsonResponse.forEach(author => {
         const authorsAnchor = document.createElement('div');
         authorsAnchor.classList.add('authorsAnchor');
@@ -164,13 +173,15 @@ const displayAllAuthors = (jsonResponse) => {
         authorContent.innerText = author.name;
         authorsAnchor.appendChild(authorContent);
         authorContent.classList.add('authorContent');
-        anchor.appendChild(authorsAnchor);
+        authorsAll.appendChild(authorsAnchor);
 
         authorContent.addEventListener('click', () => {
             let authorId = author.id;
             selectAuthor(authorId);
         })
     })
+
+    anchor.appendChild(authorsAll);
 }
 
 const allAuthorsButton = document.querySelector('.allAuthors');

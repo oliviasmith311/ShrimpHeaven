@@ -46,6 +46,8 @@ public class Populator implements CommandLineRunner {
         Hashtag hashtag6 = new Hashtag("fantastic");
         hashtagRepo.save(hashtag6);
         post1.addHashtag(hashtag6);
+        post1.addHashtag(hashtag1);
+        post1.addHashtag(hashtag5);
         postRepo.save(post1);
 
         Author author2 = new Author("Greg Gregerson");
@@ -58,6 +60,7 @@ public class Populator implements CommandLineRunner {
         hashtagRepo.save(hashtag2);
         post2.addHashtag(hashtag2);
         post2.addHashtag(hashtag6);
+        post2.addHashtag(hashtag4);
         postRepo.save(post2);
 
         Author author3 = new Author("Justin McElroo");
@@ -69,6 +72,37 @@ public class Populator implements CommandLineRunner {
         Hashtag hashtag3 = new Hashtag("amazing");
         hashtagRepo.save(hashtag3);
         post3.addHashtag(hashtag3);
+        post3.addHashtag(hashtag1);
         postRepo.save(post3);
+
+        Post post4 = new Post ("Another post by me!", author2, category1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        post4.addHashtag(hashtag2);
+        post4.addHashtag(hashtag1);
+        post4.addHashtag(hashtag5);
+        postRepo.save(post4);
+
+        Post post5 = new Post ("I love writing fake titles", author2, category1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        post5.addHashtag(hashtag1);
+        post5.addHashtag(hashtag4);
+        post5.addHashtag(hashtag5);
+        postRepo.save(post5);
+
+        Post post6 = new Post ("I'm Amazing", author3, category2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        post6.addHashtag(hashtag3);
+        post6.addHashtag(hashtag6);
+        post6.addHashtag(hashtag2);
+        postRepo.save(post6);
+
+        Post post7 = new Post ("Ghost Horse, Ghost Horse", author2, category2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        post7.addHashtag(hashtag1);
+        post7.addHashtag(hashtag3);
+        post7.addHashtag(hashtag5);
+        postRepo.save(post7);
+
+        Post post8 = new Post ("I love Lin Manuel Miranda", author1, category3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        post8.addHashtag(hashtag2);
+        post8.addHashtag(hashtag4);
+        post8.addHashtag(hashtag6);
+        postRepo.save(post8);
     }
 }

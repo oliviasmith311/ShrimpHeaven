@@ -7,6 +7,7 @@
 }
 
 .authorsAnchor{
+    cursor: pointer;
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 40px;
 }
@@ -26,6 +27,7 @@
 }
 
 .categoriesAnchor{
+    cursor: pointer;
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 40px;
 }
@@ -37,6 +39,7 @@
 }
 
 .hashtagsAnchor{
+    cursor: pointer;
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 40px;
 }

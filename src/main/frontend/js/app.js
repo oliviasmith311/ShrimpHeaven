@@ -53,6 +53,37 @@ const displayAllPosts = (jsonResponse) => {
         postDiv.appendChild(hashtagsAll);
         anchor.appendChild(postDiv);
 
+        const addHashtagButton = document.createElement('button');
+        addHashtagButton.innerText = "Add a hashtag";
+        addHashtagButton.classList.add('addHashtagButton');
+        hashtagsAll.appendChild(addHashtagButton);
+
+        addHashtagButton.addEventListener('click', () => {
+            addHashtagButton.innerText = "Submit hashtag";
+
+            const addHashtagInput = document.createElement('input');
+            addHashtagInput.setAttribute('type', 'text');
+            addHashtagInput.setAttribute('placeholder', 'Hashtag');
+            hashtagsAll.appendChild(addHashtagInput);
+
+            addHashtagButton.addEventListener('click', () => {
+
+                //adding hashtag in quotes??
+                
+                let hashtagJson = addHashtagInput.value;
+
+                fetch(`http://localhost:8080/${post.id}`, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(hashtagJson)
+                })
+                    .then(response => response.json())
+                    .then(response => displayAllPosts(response))
+            })
+        })
+
         let postCategory = document.createElement('div');
         postCategory.innerText = post.postCategory.title;
         postDiv.appendChild(postCategory);
@@ -274,6 +305,5 @@ const createNewPost = () => {
             .then(response => response.json())
             .then(response => displayAllPosts(response))
     })
-
 
 }

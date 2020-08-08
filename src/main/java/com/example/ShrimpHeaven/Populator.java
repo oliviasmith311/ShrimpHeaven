@@ -11,6 +11,9 @@ import com.example.ShrimpHeaven.Repositories.PostRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 @Component
 public class Populator implements CommandLineRunner {
 

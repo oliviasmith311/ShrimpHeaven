@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import java.sql.Timestamp;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,6 +40,7 @@ public class JpaWiringTest {
 
     @BeforeEach
     void setUp() {
+
         testAuthor = new Author("test author");
         authorRepo.save(testAuthor);
         testCategory = new PostCategory("test title");

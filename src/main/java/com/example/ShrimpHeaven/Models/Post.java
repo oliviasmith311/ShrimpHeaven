@@ -1,7 +1,10 @@
 package com.example.ShrimpHeaven.Models;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 
@@ -33,6 +36,7 @@ public class Post {
         this.postBody = postBody;
     }
 
+
     public Long getId() {
         return id;
     }
@@ -60,6 +64,7 @@ public class Post {
     public void addHashtag(Hashtag hashtagToAdd) {
         hashtags.add(hashtagToAdd);
     }
+
 
     @Override
     public boolean equals(Object o) {

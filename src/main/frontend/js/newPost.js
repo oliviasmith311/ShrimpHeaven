@@ -36,7 +36,6 @@ const createNewPost = () => {
     anchor.appendChild(newPost);
 
 
-
     newPostButton.addEventListener('click', () => {
         let newPostJson = {
             "title": newPostTitle.value,

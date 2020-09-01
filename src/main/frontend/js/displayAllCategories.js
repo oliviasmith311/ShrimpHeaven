@@ -23,7 +23,7 @@ const displayAllCategories = (jsonResponse) => {
 
         categoryContent.addEventListener('click', () => {
             let categoryId = category.id;
-            selectCategory(categoryId);
+            selectCategory(categoryId, categoryContent.innerText);
         })
     })
 

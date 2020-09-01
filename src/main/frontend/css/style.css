@@ -114,6 +114,13 @@
     height: 10em;
 }
 
+.singlePost{
+    border: 5px;
+    border-color: black;
+    border-style: solid;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
 .title{
     font-size: 50px;
     text-align: center;

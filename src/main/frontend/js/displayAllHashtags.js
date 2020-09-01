@@ -20,7 +20,7 @@ const displayAllHashtags = (jsonResponse) => {
 
         hashtagContent.addEventListener('click', () => {
             let hashtagId = hashtag.id;
-            selectHashtag(hashtagId);
+            selectHashtag(hashtagId, hashtagContent.innerText);
         })
     })
 }

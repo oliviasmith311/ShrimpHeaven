@@ -2,15 +2,14 @@ import{
     clear
 } from "../js/clear.js"
 import{
-    anchor, selectHashtag, selectCategory, selectAuthor
+    anchor, selectHashtag, selectCategory, selectAuthor, selectPost, allPosts
 } from "../js/app.js"
 
-
-const displayAllPosts = (jsonResponse) => {
+const displayAllPosts = (jsonResponse, headerText) => {
     clear(anchor);
     anchor.classList.add('anchor');
     const postHeader = document.createElement('div');
-    postHeader.innerText = "All Posts";
+    postHeader.innerText = headerText;
     postHeader.classList.add('postHeader');
     anchor.appendChild(postHeader);
 
@@ -25,9 +24,14 @@ const displayAllPosts = (jsonResponse) => {
         postTitle.classList.add('title');
 
         let postAuthor = document.createElement('div');
-        postAuthor.innerText = "Author: " + post.author.name;
+        postAuthor.innerText = post.author.name;
         postDiv.appendChild(postAuthor);
         postAuthor.classList.add('author');
+
+        let postCategory = document.createElement('div');
+        postCategory.innerText = post.postCategory.title;
+        postDiv.appendChild(postCategory);
+        postCategory.classList.add('category');
 
         let postBody = document.createElement('div');
         postBody.innerText = post.postBody;
@@ -47,55 +51,29 @@ const displayAllPosts = (jsonResponse) => {
             postHashtags.addEventListener('click', () => {
                 clear(anchor);
                 let hashtagLinkId = hashtag.id;
-                selectHashtag(hashtagLinkId);
+                selectHashtag(hashtagLinkId, postHashtags.innerText);
             })
         })
 
         postDiv.appendChild(hashtagsAll);
         anchor.appendChild(postDiv);
 
-        const addHashtagButton = document.createElement('button');
-        addHashtagButton.innerText = "Add a hashtag";
-        addHashtagButton.classList.add('addHashtagButton');
-        hashtagsAll.appendChild(addHashtagButton);
-
-        addHashtagButton.addEventListener('click', () => {
-            addHashtagButton.innerText = "Submit hashtag";
-
-            const addHashtagInput = document.createElement('input');
-            addHashtagInput.setAttribute('type', 'text');
-            addHashtagInput.setAttribute('placeholder', 'Hashtag');
-            hashtagsAll.appendChild(addHashtagInput);
-
-            addHashtagButton.addEventListener('click', () => {
-
-                fetch(`http://localhost:8080/${post.id}`, {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: addHashtagInput.value
-                })
-                    .then(response => response.json())
-                    .then(response => displayAllPosts(response))
-            })
-        })
-
-        let postCategory = document.createElement('div');
-        postCategory.innerText = post.postCategory.title;
-        postDiv.appendChild(postCategory);
-        postCategory.classList.add('category');
-
         postCategory.addEventListener('click', () => {
             clear(anchor);
             let categoryLinkId = post.postCategory.id;
-            selectCategory(categoryLinkId);
+            selectCategory(categoryLinkId, postCategory.innerText);
         })
 
         postAuthor.addEventListener('click', () => {
             clear(anchor);
             let authorLinkId = post.author.id;
-            selectAuthor(authorLinkId)
+            selectAuthor(authorLinkId, postAuthor.innerText);
+        })
+
+        postTitle.addEventListener('click', () => {
+            clear(anchor);
+            let postLinkId = post.id;
+            selectPost(postLinkId, postTitle.innerText);
         })
     })
 }

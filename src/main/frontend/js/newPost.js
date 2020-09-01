@@ -1,5 +1,5 @@
 import{
-    anchor
+    anchor, allPosts
 } from "../js/app.js"
 import{
     displayAllPosts

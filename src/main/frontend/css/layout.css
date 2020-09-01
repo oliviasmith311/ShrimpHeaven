@@ -181,6 +181,13 @@ body {
   width: 100%;
 }
 
+.singlePost{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5em;
+  width: 27em;
+}
+
 .title{
   margin-bottom: 5px;
 }

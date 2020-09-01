@@ -16,10 +16,15 @@ import{
 import{
     displayAllAuthors
 } from "../js/displayAllAuthors.js"
+import{
+    displaySinglePost
+} from "../js/displaySinglePost.js"
+
+let allPosts = "All Posts";
 
 fetch('http://localhost:8080/')
     .then(response => response.json())
-    .then(response => displayAllPosts(response));
+    .then(response => displayAllPosts(response, allPosts));
 
 const anchor = document.querySelector('.anchor');
 
@@ -29,7 +34,7 @@ allPostsButton.addEventListener('click', () => {
     clear(anchor);
     fetch('http://localhost:8080/')
         .then(response => response.json())
-        .then(response => displayAllPosts(response));
+        .then(response => displayAllPosts(response, allPosts));
 })
 
 const allHashtagsButton = document.querySelector('.allHashtags');
@@ -59,25 +64,32 @@ allAuthorsButton.addEventListener('click', () => {
         .then(response => displayAllAuthors(response));
 })
 
-const selectAuthor = (authorId) => {
+const selectAuthor = (authorId, authorName) => {
     clear(anchor);
     fetch(`http://localhost:8080/authors/${authorId}`)
         .then(response => response.json())
-        .then(response => displayAllPosts(response));
+        .then(response => displayAllPosts(response, authorName));
 }
 
-const selectCategory = (categoryId) => {
+const selectCategory = (categoryId, categoryName) => {
     clear(anchor);
     fetch(`http://localhost:8080/categories/${categoryId}`)
         .then(response => response.json())
-        .then(response => displayAllPosts(response));
+        .then(response => displayAllPosts(response, categoryName));
 }
 
-const selectHashtag = (hashtagId) => {
+const selectHashtag = (hashtagId, hashtagName) => {
     clear(anchor);
     fetch(`http://localhost:8080/hashtags/${hashtagId}`)
         .then(response => response.json())
-        .then(response => displayAllPosts(response));
+        .then(response => displayAllPosts(response, hashtagName));
+}
+
+const selectPost = (postID) => {
+    clear(anchor);
+    fetch(`http://localhost:8080/${postID}`)
+        .then(response => response.json())
+        .then(response => displaySinglePost(response));
 }
 
 const newPostButton = document.querySelector('.newPostButton');
@@ -89,5 +101,5 @@ newPostButton.addEventListener('click', () => {
 
 
 export{
-    anchor, selectCategory, selectAuthor, selectHashtag
+    anchor, selectCategory, selectAuthor, selectHashtag, selectPost, allPosts
 }

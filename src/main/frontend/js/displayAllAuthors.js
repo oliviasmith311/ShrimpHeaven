@@ -24,7 +24,7 @@ const displayAllAuthors = (jsonResponse) => {
 
         authorContent.addEventListener('click', () => {
             let authorId = author.id;
-            selectAuthor(authorId);
+            selectAuthor(authorId, authorContent.innerText);
         })
     })
 

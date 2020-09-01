@@ -68,7 +68,7 @@ public class PostController {
     }
     
     @PostMapping("/{id}")
-    public Collection<Post> addHashtagToPost(@RequestBody String hashtag, @PathVariable Long id){
+    public Post addHashtagToPost(@RequestBody String hashtag, @PathVariable Long id){
         Hashtag hashtagToAdd;
         Optional<Hashtag> hashtagToAddOpt = Optional.ofNullable(hashtagRepository.findByContent(hashtag));
         if(hashtagToAddOpt.isEmpty()){
@@ -81,6 +81,6 @@ public class PostController {
         postToModify.addHashtag(hashtagToAdd);
         postRepository.save(postToModify);
 
-        return (Collection<Post>) postRepository.findAll();
+        return postToModify;
     }
 }

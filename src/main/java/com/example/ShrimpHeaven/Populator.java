@@ -35,7 +35,7 @@ public class Populator implements CommandLineRunner {
         authorRepo.save(author1);
         PostCategory category1 = new PostCategory("Thoughts & Opinions");
         categoryRepository.save(category1);
-        Post post1 = new Post("The Joys Of The McElroys", author1, category1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis quam id, mollis nulla.");
+        Post post1 = new Post("The Joys Of The McElroys", author1, category1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis quam id, mollis nulla.", new Timestamp(System.currentTimeMillis()));
         postRepo.save(post1);
         Hashtag hashtag1 = new Hashtag("cool");
         hashtagRepo.save(hashtag1);
@@ -57,7 +57,7 @@ public class Populator implements CommandLineRunner {
         authorRepo.save(author2);
         PostCategory category2 = new PostCategory("Stories");
         categoryRepository.save(category2);
-        Post post2 = new Post("When I Met Clint", author2, category2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis quam id, mollis nulla.");
+        Post post2 = new Post("When I Met Clint", author2, category2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis quam id, mollis nulla.", new Timestamp(System.currentTimeMillis()));
         postRepo.save(post2);
         Hashtag hashtag2 = new Hashtag("romantic");
         hashtagRepo.save(hashtag2);
@@ -70,7 +70,7 @@ public class Populator implements CommandLineRunner {
         authorRepo.save(author3);
         PostCategory category3 = new PostCategory("Questions");
         categoryRepository.save(category3);
-        Post post3 = new Post("Favorite McElroy goof?", author3, category3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis quam id, mollis nulla.");
+        Post post3 = new Post("Favorite McElroy goof?", author3, category3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis quam id, mollis nulla.", new Timestamp(System.currentTimeMillis()));
         postRepo.save(post3);
         Hashtag hashtag3 = new Hashtag("amazing");
         hashtagRepo.save(hashtag3);
@@ -78,31 +78,31 @@ public class Populator implements CommandLineRunner {
         post3.addHashtag(hashtag1);
         postRepo.save(post3);
 
-        Post post4 = new Post ("Another post by me!", author2, category1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        Post post4 = new Post ("Another post by me!", author2, category1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.", new Timestamp(System.currentTimeMillis()));
         post4.addHashtag(hashtag2);
         post4.addHashtag(hashtag1);
         post4.addHashtag(hashtag5);
         postRepo.save(post4);
 
-        Post post5 = new Post ("I love writing fake titles", author2, category1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        Post post5 = new Post ("I love writing fake titles", author2, category1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.", new Timestamp(System.currentTimeMillis()));
         post5.addHashtag(hashtag1);
         post5.addHashtag(hashtag4);
         post5.addHashtag(hashtag5);
         postRepo.save(post5);
 
-        Post post6 = new Post ("I'm Amazing", author3, category2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        Post post6 = new Post ("I'm Amazing", author3, category2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.", new Timestamp(System.currentTimeMillis()));
         post6.addHashtag(hashtag3);
         post6.addHashtag(hashtag6);
         post6.addHashtag(hashtag2);
         postRepo.save(post6);
 
-        Post post7 = new Post ("Ghost Horse, Ghost Horse", author2, category2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        Post post7 = new Post ("Ghost Horse, Ghost Horse", author2, category2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.", new Timestamp(System.currentTimeMillis()));
         post7.addHashtag(hashtag1);
         post7.addHashtag(hashtag3);
         post7.addHashtag(hashtag5);
         postRepo.save(post7);
 
-        Post post8 = new Post ("I love Lin Manuel Miranda", author1, category3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.");
+        Post post8 = new Post ("I love Lin Manuel Miranda", author1, category3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tortor condimentum, sagittis guam id, mollus nulla.", new Timestamp(System.currentTimeMillis()));
         post8.addHashtag(hashtag2);
         post8.addHashtag(hashtag4);
         post8.addHashtag(hashtag6);

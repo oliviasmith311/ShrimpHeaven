@@ -17,6 +17,11 @@ const displaySinglePost = (jsonResponse) => {
     postDiv.appendChild(postTitle);
     postTitle.classList.add('title');
 
+    let postTimestamp = document.createElement('div');
+    postTimestamp.innerText = jsonResponse.timestamp;
+    postDiv.appendChild(postTimestamp);
+    postTimestamp.classList.add('timestamp');
+
     let postAuthor = document.createElement('div');
     postAuthor.innerText = "Author: " + jsonResponse.author.name;
     postDiv.appendChild(postAuthor);
@@ -45,7 +50,8 @@ const displaySinglePost = (jsonResponse) => {
         postHashtags.addEventListener('click', () => {
             clear(anchor);
             let hashtagLinkId = hashtag.id;
-            selectHashtag(hashtagLinkId);
+            selectHashtag(hashtagLinkId, 'All posts with ' + postHashtags.innerText);
+
         })
     })
 
@@ -55,15 +61,15 @@ const displaySinglePost = (jsonResponse) => {
     postCategory.addEventListener('click', () => {
         clear(anchor);
         let categoryLinkId = jsonResponse.postCategory.id;
-        selectCategory(categoryLinkId);
+        selectCategory(categoryLinkId, postCategory.innerText);
     })
 
     postAuthor.addEventListener('click', () => {
         clear(anchor);
         let authorLinkId = jsonResponse.author.id;
-        selectAuthor(authorLinkId);
+        selectAuthor(authorLinkId, 'All posts by ' + postAuthor.innerText);
     })
-    
+
     const addHashtagButton = document.createElement('button');
     addHashtagButton.innerText = "Add a hashtag";
     addHashtagButton.classList.add('addHashtagButton');

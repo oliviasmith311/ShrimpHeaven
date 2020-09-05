@@ -4,6 +4,7 @@ import{
 import{
     anchor, selectHashtag, selectCategory, selectAuthor, selectPost, allPosts
 } from "../js/app.js"
+import { displaySinglePost } from "./displaySinglePost.js";
 
 const displayAllPosts = (jsonResponse, headerText) => {
     clear(anchor);
@@ -23,6 +24,11 @@ const displayAllPosts = (jsonResponse, headerText) => {
         postDiv.appendChild(postTitle);
         postTitle.classList.add('title');
 
+        let postTimestamp = document.createElement('div');
+        postTimestamp.innerText = post.timestamp;
+        postDiv.appendChild(postTimestamp);
+        postTimestamp.classList.add('timestamp');
+
         let postAuthor = document.createElement('div');
         postAuthor.innerText = post.author.name;
         postDiv.appendChild(postAuthor);
@@ -34,8 +40,23 @@ const displayAllPosts = (jsonResponse, headerText) => {
         postCategory.classList.add('category');
 
         let postBody = document.createElement('div');
-        postBody.innerText = post.postBody;
+        let textBody = post.postBody;
         postDiv.appendChild(postBody);
+        let seeMore = document.createElement('button');
+        seeMore.classList.add('seeMore');
+        seeMore.innerText = "See more";
+
+        if(textBody.length >= 100){
+            postBody.innerText = textBody.substring(0, 100) + "...";
+            seeMore.addEventListener('click', () => {
+                selectPost(post.id);
+            });
+            postDiv.appendChild(seeMore);
+        } else {
+            postBody.innerText = textBody;
+        }
+        
+
         postBody.classList.add('body');
 
         const hashtagsAll = document.createElement('div');
@@ -51,7 +72,7 @@ const displayAllPosts = (jsonResponse, headerText) => {
             postHashtags.addEventListener('click', () => {
                 clear(anchor);
                 let hashtagLinkId = hashtag.id;
-                selectHashtag(hashtagLinkId, postHashtags.innerText);
+                selectHashtag(hashtagLinkId, 'All posts with ' + postHashtags.innerText);
             })
         })
 
@@ -67,7 +88,7 @@ const displayAllPosts = (jsonResponse, headerText) => {
         postAuthor.addEventListener('click', () => {
             clear(anchor);
             let authorLinkId = post.author.id;
-            selectAuthor(authorLinkId, postAuthor.innerText);
+            selectAuthor(authorLinkId, 'All posts by ' + postAuthor.innerText);
         })
 
         postTitle.addEventListener('click', () => {

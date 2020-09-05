@@ -47,7 +47,7 @@ public class JpaWiringTest {
         categoryRepo.save(testCategory);
         testHashtag = new Hashtag("test content");
         hashtagRepo.save(testHashtag);
-        testPost = new Post("test title", testAuthor, testCategory, "test body");
+        testPost = new Post("test title", testAuthor, testCategory, "test body", new Timestamp(System.currentTimeMillis()));
         testPost.addHashtag(testHashtag);
         postRepo.save(testPost);
     }

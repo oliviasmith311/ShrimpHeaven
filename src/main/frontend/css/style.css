@@ -1,3 +1,7 @@
+.addHashtagButton{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
 .author{
     font-size: 20px;
 }
@@ -97,6 +101,26 @@
     font-size: 1.8em;
 }
 
+.newAuthor{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.newBody{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.newCategory{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.newPost{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.newTitle{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
 .post{
     border: 5px;
     border-color: black;
@@ -108,6 +132,12 @@
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 150px;
     text-align: right;
+}
+
+.seeMore{
+    background-color: white;
+    border: none;
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 .shrimppic{

@@ -10,6 +10,7 @@ import com.example.ShrimpHeaven.Repositories.PostCategoryRepository;
 import com.example.ShrimpHeaven.Repositories.PostRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -61,7 +62,7 @@ public class PostController {
         }
         categoryRepository.save(categoryToStore);
 
-        Post postToBeMade = new Post(post.getTitle(), authorToStore, categoryToStore, post.getPostBody());
+        Post postToBeMade = new Post(post.getTitle(), authorToStore, categoryToStore, post.getPostBody(), post.getTimestamp());
         postRepository.save(postToBeMade);
 
         return (Collection<Post>) postRepository.findAll();

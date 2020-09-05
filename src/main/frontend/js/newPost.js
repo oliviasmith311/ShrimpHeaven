@@ -30,6 +30,7 @@ const createNewPost = () => {
     newPostCategory.classList.add('newCategory')
     newPost.appendChild(newPostCategory);
     const newPostButton = document.createElement('button');
+    newPostButton.classList.add('newPost');
     newPostButton.innerText = "Post";
     newPost.appendChild(newPostButton);
 
@@ -51,7 +52,7 @@ const createNewPost = () => {
             body: JSON.stringify(newPostJson)
         })
             .then(response => response.json())
-            .then(response => displayAllPosts(response))
+            .then(response => displayAllPosts(response, allPosts))
     })
 
 }

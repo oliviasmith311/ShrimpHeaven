@@ -26,16 +26,22 @@ public class Post {
 
     private String postBody;
 
+    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
     public Post(){}
 
-    public Post(String title, Author author, PostCategory postCategory, String postBody){
+    public Post(String title, Author author, PostCategory postCategory, String postBody, Timestamp timestamp){
         this.title = title;
         this.author = author;
         this.postCategory = postCategory;
         this.hashtags = new HashSet<>();
         this.postBody = postBody;
+        this.timestamp = timestamp;
     }
 
+    public Timestamp getTimestamp(){
+        return timestamp;
+    }
 
     public Long getId() {
         return id;
@@ -64,7 +70,6 @@ public class Post {
     public void addHashtag(Hashtag hashtagToAdd) {
         hashtags.add(hashtagToAdd);
     }
-
 
     @Override
     public boolean equals(Object o) {
